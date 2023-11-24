@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image"
 import NavBar from "./components/nav-bar"
 import SideBar from "./components/side-bar"
 import EventList from "./components/event-list"

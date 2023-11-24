@@ -1,7 +1,18 @@
 "use client"
-import eventsData from '../../constants/events-data.json'
+import { useEffect, useState } from 'react';
 import ListTable from '../list-table';
+import apiHandler from '@/app/utils/api-handler';
 
 export default function EventList() {
-    return <ListTable data={eventsData}/>
+    const [eventData , setEventData] = useState([])
+    const getData = async () => {
+        const data = await apiHandler.getData()
+        setEventData(data)
+    }
+
+    useEffect(()=>{
+        getData()
+    }, [])
+
+    return <ListTable data={eventData}/>
 }

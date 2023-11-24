@@ -5,17 +5,12 @@ import Filter from '../filter';
 import { useEffect, useState } from 'react';
 
 type PropsType = {
-    data: Array<{
-        id: number,
-        title: string,
-        time: string,
-        location: string,
-        liked: boolean
-    }>
+    data: Array<Object>
 }
 
 export default function ListTable(props: PropsType) {
     const { data: eventsData } = props
+    
     const [modalData, setModalData] = useState(Object)
     const handelClick = (data: Object) => {
         setModalData(data)
@@ -30,6 +25,7 @@ export default function ListTable(props: PropsType) {
             window.removeEventListener("resize", handleResizeWindow);
         };
     }, []);
+    
     if (width < breakpoint) {
         return (
             <>
@@ -41,7 +37,7 @@ export default function ListTable(props: PropsType) {
                             return (
                                 <div key={data.id} className='flex flex-col relative justify-around mt-3 bg-white p-3 pl-3 rounded-xl' onClick={() => handelClick(data)}>
                                     <div className='basis-full font-bold'>{data.id}. {data.title}</div>
-                                    <div className='basis-full text-slate-600 font-medium'>{new Date(data.time).toLocaleString()}</div>
+                                    <div className='basis-full text-slate-600 font-medium'>{new Date(data.start).toLocaleString()}</div>
                                     <div className='basis-full text-slate-500 text-md'>{data.location}</div>
                                     <Image
                                         className='absolute bottom-3 right-3'
@@ -60,7 +56,7 @@ export default function ListTable(props: PropsType) {
                     <Modal
                         title={modalData.title}
                         category={modalData.category}
-                        time={modalData.time}
+                        time={modalData.start}
                         description={modalData.description}
                         location={modalData.location}
                         onClose={() => setModalData({})}
@@ -87,11 +83,11 @@ export default function ListTable(props: PropsType) {
                         {eventsData.map(data => {
                             return (
                                 <div key={data.id} className='flex justify-around mt-3 bg-white p-3 pl-6 rounded-xl border border-gray-100' onClick={() => handelClick(data)}>
-                                    <div className='basis-full font-bold'>{data.id}</div>
-                                    <div className='basis-full text-slate-500'>{data.title}</div>
-                                    <div className='basis-full text-slate-600 font-medium'>{new Date(data.time).toLocaleTimeString()}</div>
-                                    <div className='basis-full text-slate-600 font-medium'>{new Date(data.time).toLocaleDateString()}</div>
-                                    <div className='basis-full text-slate-500 text-md'>{data.location}</div>
+                                    <div className='max-w-[180px] break-words pr-4 basis-full font-bold'>{data.id}</div>
+                                    <div className='max-w-[180px] break-words basis-full text-slate-500'>{data.title}</div>
+                                    <div className='max-w-[180px] break-words basis-full text-slate-600 font-medium'>{new Date(data.start).toLocaleTimeString()}</div>
+                                    <div className='max-w-[180px] break-words basis-full text-slate-600 font-medium'>{new Date(data.start).toLocaleDateString()}</div>
+                                    <div className='max-w-[180px] break-words pr-6 basis-full text-slate-500 text-md'>{data.location}</div>
                                     <Image
                                         className='w-auto h-auto'
                                         src={data.liked ? 'liked.svg' : 'notLiked.svg'}
@@ -109,7 +105,7 @@ export default function ListTable(props: PropsType) {
                     <Modal
                         title={modalData.title}
                         category={modalData.category}
-                        time={modalData.time}
+                        time={modalData.start}
                         description={modalData.description}
                         location={modalData.location}
                         onClose={() => setModalData({})}
