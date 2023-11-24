@@ -14,10 +14,11 @@ import { useState, useEffect } from "react"
 export default function Home() {
   const [selected, setSelected] = useState('grid')
   const [displaySideBar, setDisplaySideBar] = useState(false)
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(99999);
   const breakpoint = 640;
   // const breakpoint = 910;
   useEffect(() => {
+    setWidth(window.innerWidth)
     const handleResizeWindow = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResizeWindow);
     return () => {

@@ -4,7 +4,7 @@ import apiHandler from "@/app/utils/api-handler"
 import { useEffect, useState } from 'react'
 
 export default function TopEvent() {
-        const [eventData , setEventData] = useState([])
+        const [eventData , setEventData] = useState<Array<any>>([])
         const getData = async () => {
             const data = await apiHandler.getData('?limit=1&sort=rank')
             setEventData(data)

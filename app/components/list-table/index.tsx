@@ -5,7 +5,7 @@ import Filter from '../filter';
 import { useEffect, useState } from 'react';
 
 type PropsType = {
-    data: Array<Object>
+    data: Array<any>
 }
 
 export default function ListTable(props: PropsType) {
@@ -15,10 +15,11 @@ export default function ListTable(props: PropsType) {
     const handelClick = (data: Object) => {
         setModalData(data)
     }
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(99999);
     const breakpoint = 640;
     // const breakpoint = 910;
     useEffect(() => {
+        setWidth(window.innerWidth)
         const handleResizeWindow = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResizeWindow);
         return () => {

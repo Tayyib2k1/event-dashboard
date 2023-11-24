@@ -2,13 +2,17 @@
 import apiHandler from "@/app/utils/api-handler"
 import { useEffect, useState } from "react"
 
+type dataTemplate = {
+    total: number | string,
+    thisMonth: number | string,
+    liked: number | string
+}
+
 export default function CountsCards() {
-        const [counts , setCounts] = useState({})
+        const [counts , setCounts] = useState<dataTemplate | null>(null)
         const getData = async () => {
             const data = await apiHandler.getCardsCounts()
             setCounts(data)
-            console.log(data);
-            
         }
 
         useEffect(()=>{

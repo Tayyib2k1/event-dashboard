@@ -29,7 +29,11 @@ function ApiHandler() {
     }
 
     const getCardsCounts = async () => {
-        const data = {}
+        let data = {
+            total: '0',
+            thisMonth: '0',
+            liked: '0'
+        }
         await axios.get(
             `${API_BASE_URL}/v1/events/count`
         ).then(response => {

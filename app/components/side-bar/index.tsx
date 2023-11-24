@@ -11,9 +11,9 @@ export default function SideBar(props: PropsType) {
 
     return (
         <div className='bg-white p-3 pt-5 h-[44rem] m-4 ml-5 mt-0 rounded-full w-fit hidden sm:flex flex-col gap-3'>
-            {sideBarData.map(data => {
+            {sideBarData.map((data, i) => {
                 return (
-                    <div onClick={() => changeSelected(data.type)} className='rounded-full transition delay-150 hover:scale-110 hover:shadow'>
+                    <div key={i} onClick={() => changeSelected(data.type)} className='rounded-full transition delay-150 hover:scale-110 hover:shadow'>
                         <Image
                             className='h-auto bg-white rounded-full'
                             src={selected == data.type ? data.selected : data.image}

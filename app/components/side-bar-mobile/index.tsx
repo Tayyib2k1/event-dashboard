@@ -33,11 +33,11 @@ export default function SideBarMobile(props: PropsType) {
                 />
             </div>
             <ul className='pt-16'>
-                {sideBarData.map(data => {
+                {sideBarData.map((data, i) => {
                     return (
                         <>
-                            <li onClick={()=>handelClick(data.type)}>{data.title}</li>
-                            <hr className='my-3'/>
+                            <li key={i} onClick={()=>handelClick(data.type)}>{data.title}</li>
+                            <hr key={i} className='my-3'/>
                         </>
                     )
                 })}
