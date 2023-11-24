@@ -1,0 +1,14 @@
+[
+    {
+        "type": "grid",
+        "title": "Dashboard",
+        "image": "grid.svg",
+        "selected": "gridSelected.svg"
+    },
+    {
+        "type": "heart",
+        "title": "Favourite Events",
+        "image": "heart.svg",
+        "selected": "heartSelected.svg"
+    }
+]
